@@ -7,7 +7,7 @@ Para probar nuestro modelo necesitamos una instancia de SQL Server. Puede ser en
  
 Abrir la terminal y ejecutar el siguiente comando
 ```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Gestion8.0" -e "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest --name sqlserver
+docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Gestion8.0" -e "MSSQL_PID=Developer" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest 
 ```
 
 Estamos usando Docker para crear un servidor de SQL Server con la edición de Desarrollador desde una imagen de Microsoft. Usamos SQL Authentication, el usuario ```sa``` y ```Gestion8.0``` como password. 
