@@ -17,4 +17,6 @@ Este servidor no es persistente así que la base de datos que se cree (y los dat
 En el archivo ```devcontainer``` ya están especificadas las extensiones de VSCode necesarias (mssql y mermaid)
 
 
+./sqlcmd -H [localhost] -U sa -P Gestion8.0 -Q "RESTORE DATABASE [Northwind] FROM DISK='/tmp/Northwind.bak' WITH RECOVERY"
+
 

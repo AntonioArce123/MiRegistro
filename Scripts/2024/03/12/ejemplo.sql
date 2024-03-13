@@ -71,3 +71,5 @@ select * from Products
 
 
         
+RESTORE DATABASE [Northwind] FROM DISK='/tmp/Northwind.bak' WITH RECOVERY
+
