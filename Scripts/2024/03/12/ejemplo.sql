@@ -96,3 +96,25 @@ select ProductID, ProductName, UnitPrice, CompanyName from Products
     --order by CompanyName
     --order by UnitInStock
     order by Suppliers.Country
+
+--11/04/2024
+   
+USE [Northwind]
+GO
+
+SELECT CategoryName,  MAX(UnitPrice) as 'Precio más alto' FROM Products
+		INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+	GROUP BY CategoryName 
+	ORDER BY [Precio más alto] DESC
+GO
+
+SELECT * FROM [Order Details] 
+
+SELECT OrderID = 10248 from [Order Details]
+
+SELECT ORDERS.OrderID, SUM(UnitPrice*QUANTITY*(1-Discount)) AS TOTAL FROM [Order Details]
+JOIN ORDERS ON ORDERS.OrderID = [Order Details].OrderID
+	--WHERE OrderID = 10285
+	GROUP BY ORDERS.OrderID, OrderDate 
+	HAVING SUM(UnitPrice*QUANTITY*(1-Discount))>1000 
+	ORDER BY TOTAL ASC
