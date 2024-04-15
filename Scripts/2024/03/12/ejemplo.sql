@@ -118,3 +118,26 @@ JOIN ORDERS ON ORDERS.OrderID = [Order Details].OrderID
 	GROUP BY ORDERS.OrderID, OrderDate 
 	HAVING SUM(UnitPrice*QUANTITY*(1-Discount))>1000 
 	ORDER BY TOTAL ASC
+	
+--CLASE 15/04/24
+USE Northwind
+GO
+SELECT ProductName, UnitPrice FROM Products
+WHERE ProductID IN (
+SELECT ProductID FROM Orders O
+JOIN [Order Details] OD ON OD.OrderID = O.OrderID
+	WHERE DATEPART(YEAR, OrderDate) = 1997 AND DATEPART(MONTH, OrderDate) = 1
+	)
+
+SELECT ProductID, ProductName, UnitPrice FROM Products 
+	WHERE UnitPrice =(
+	SELECT MAX(UNITPRICE) FROM Products
+	)
+	 
+--MAL EN = O IN
+/*SELECT * FROM Products
+	WHERE UnitPrice =/IN (
+	SELECT SupplierID, MAX(UnitPrice) FROM Products
+		GROUP BY SupplierID
+	)
+*/
